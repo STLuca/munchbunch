@@ -1,0 +1,11 @@
+<app-restaurant-dashboard-view 
+    [restaurant]="restaurantView | async" 
+    [uid]="uid | async" 
+    [comments]="comments | async" 
+    [owner]="owner | async"
+    (createComment)="createComment($event)" 
+    (newQuery)="newQueryData($event)" 
+    (addMenu)="createMenu($event)" 
+    (dineAt)="dineAt($event)">
+</app-restaurant-dashboard-view>
+

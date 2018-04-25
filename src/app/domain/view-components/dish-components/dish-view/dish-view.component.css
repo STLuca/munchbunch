@@ -1,0 +1,45 @@
+.grid {
+    
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    grid-column-gap: 5%;
+    margin: 5px;
+}
+
+/*
+img {
+    height: 200px;
+    width: 250px;
+}
+*/
+mat-card-title {
+    text-align: center;
+}
+
+.container {
+    width: 700px;
+    border-color: black;
+    border-width: 2px 0px 2px 0px;
+    border-style: solid;
+    margin: auto;
+}
+
+.infoHeader{
+    display: grid;
+    grid-template-columns: 3fr 1fr
+    
+}
+
+.price {
+    text-align: right;
+}
+
+.actions {
+    position: absolute;
+    bottom: 5%;
+    width: 100%;
+}
+
+.info {
+    position: relative;
+}

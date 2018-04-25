@@ -1,0 +1,8 @@
+<mat-accordion>
+
+  <ng-container *ngFor="let menu of menuViews">
+      
+      <app-menu-container [menuView]="menu" [restaurantID]="restaurantId"></app-menu-container>
+  </ng-container>
+
+</mat-accordion>

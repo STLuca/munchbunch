@@ -1,0 +1,5 @@
+<app-dining-at-view
+  [restaurant]="restaurant | async"
+  [table]="table | async"
+  (navigate)="navigateToRestaurant($event)"
+></app-dining-at-view>

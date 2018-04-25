@@ -1,0 +1,17 @@
+<div class="commentFormContainer">
+
+  <form [formGroup]="form" novalidate (ngSubmit)="submit()">
+
+    <div class="textInput">
+      <mat-form-field>
+        <textarea matInput formControlName="comment" placeholder="Write a comment"></textarea>
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button type="submit" [disabled]="!form.valid">
+      <mat-icon>send</mat-icon>
+    </button>
+
+  </form>
+
+</div>

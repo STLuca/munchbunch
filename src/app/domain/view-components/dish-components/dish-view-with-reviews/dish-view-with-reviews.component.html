@@ -1,0 +1,26 @@
+<!--
+<app-dish-view [dishView]="dishView" [orderable]="orderable" (addOrder)="addOrder.emit()" ></app-dish-view>
+<h2 class="mat-title">Write a review</h2>
+<app-comment-form [replyToID]="dishView.id" [resource]="'dishComments'" [uid]="uid" (createComment)="createComment.emit($event)"></app-comment-form>
+-->
+<h2 class="mat-title">Comments</h2>
+
+
+
+
+
+<app-ngrx-pagination    [filterKeys]="['timestamp']"
+                        [orderKeys]="['timestamp']" 
+                        [startOrder]="pagedStartOrder" 
+                        [constantFilter]="pagedConstantFilter" 
+                        [resourceName]="'dishComments'"
+                        (queryData)="newQuery.emit($event)">
+
+    <div class="comments">
+        <ng-container *ngFor="let comment of comments">
+            <app-comment-container [comment]="comment" [resource]="'dishComments'"></app-comment-container>
+        </ng-container>
+    </div>
+
+</app-ngrx-pagination>
+

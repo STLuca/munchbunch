@@ -1,0 +1,5 @@
+<app-comment-view
+  [comment]="comment"
+  [owner]="commentOwner | async"
+  (deleteComment)="deleteComment($event)">
+</app-comment-view>

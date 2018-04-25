@@ -1,0 +1,38 @@
+img {
+    max-width: 480px;
+    max-height: 270px;
+    display: block;
+    margin: auto;
+}
+
+h2 {
+    text-align: center
+}
+
+.restaurantsList {
+    margin: auto;
+}
+
+.ordersGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 30px;
+}
+
+.restaurants, .orders {
+    margin: auto;
+}
+
+.restaurantsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-gap: 30px;
+    align-items: center;
+}
+
+.purchasesGrid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+    grid-gap: 30px;
+    align-items: center;
+}

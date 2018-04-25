@@ -1,0 +1,8 @@
+<app-menu-view 
+      [menuView]="menuView" 
+      [restaurantID]="restaurantID" 
+      [owner]="owner | async" 
+      (addDish)="addDish($event)"
+      (editMenu)="editMenu($event)" 
+      (deleteMenu)="deleteMenu($event)">
+</app-menu-view>

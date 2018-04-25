@@ -1,0 +1,45 @@
+<mat-accordion [multi]="true">
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Pending
+      </mat-panel-title>
+      <mat-panel-description>
+        Orders waiting to be cooked
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+      <app-orders-table [orders]="pending | async" [actionsEnable]="false"  ></app-orders-table>
+
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Cooking
+      </mat-panel-title>
+      <mat-panel-description>
+        Orders being cooked
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <app-orders-table [orders]="cooking | async" [actionsEnable]="false"></app-orders-table>
+
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Cooked
+      </mat-panel-title>
+      <mat-panel-description>
+        Orders cooked
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <app-orders-table [orders]="cooked | async" [actionsEnable]="false"></app-orders-table>
+
+  </mat-expansion-panel>
+
+</mat-accordion>

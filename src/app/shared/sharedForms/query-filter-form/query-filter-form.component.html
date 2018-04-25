@@ -1,0 +1,22 @@
+<form [formGroup]="form">
+  <mat-form-field>
+    <mat-select placeholder="Field" formControlName="selectedKey">
+      <mat-option *ngFor="let key of filterKeys" [value]="key" >
+        {{key}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+  <mat-form-field>
+    <mat-select placeholder="Comparison" formControlName="selectedComparison">
+      <mat-option *ngFor="let key of comparisons" [value]="key" >
+        {{key}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+  <mat-form-field>
+    <input matInput placeholder="Value" formControlName="value">
+  </mat-form-field>
+</form>
+

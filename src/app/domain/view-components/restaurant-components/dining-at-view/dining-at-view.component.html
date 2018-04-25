@@ -1,0 +1,19 @@
+
+<ng-container *ngIf="restaurant && table; else notDining">
+  <div>
+    <p class="mat-body-1">
+      Current dining: 
+      <button mat-button (click)="navigate.emit(restaurant.id)">
+          {{restaurant.name}}
+      </button>
+      <br />Table: {{table}}
+    </p>
+  </div>
+  
+</ng-container>
+
+<ng-template #notDining>
+  <p class="mat-body-1">
+    Current dining: not selected
+  </p>
+</ng-template>

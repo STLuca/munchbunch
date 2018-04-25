@@ -1,0 +1,9 @@
+<app-restaurant-card-view
+  [restaurant]="restaurant"
+  [uid]="uid | async"
+  [distance]="distance"
+  (navigateToRestaurant)="navigateToRestaurant($event)"
+  (navigateToRestaurantOrders)="navigateToRestaurantOrders($event)"
+  (editRestaurant)="editRestaurant($event)"
+  (deleteRestaurant)="deleteRestaurant($event)"
+></app-restaurant-card-view>

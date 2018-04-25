@@ -1,0 +1,21 @@
+<form [formGroup]="userForm" novalidate (ngSubmit)="submitValue.next(userForm.value)" class="formContainer">
+
+  <h2 class="mat-title">Update User Data</h2>
+
+  <div>
+    <mat-form-field>
+      <input matInput type="text" formControlName="name" placeholder="name">
+    </mat-form-field>
+  </div>
+  
+  <div>
+    <mat-form-field>
+      <textarea matInput formControlName="pictureUrl" placeholder="picture"></textarea>
+      <app-upload (uploadedUrl)="updatePictureInput($event)"></app-upload>
+    </mat-form-field>
+  </div>
+  <img src="{{userForm.get('pictureUrl').value}}" alt="no image selected">
+  
+  <button color="primary" mat-raised-button type="submit" >Submit</button>     
+            
+</form>

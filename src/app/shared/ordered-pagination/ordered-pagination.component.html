@@ -1,0 +1,28 @@
+
+<app-form-array [createForm]="createOrderForm" [formGroup]="form" [key]="'orders'" [name]="'Orders'">
+    <ng-template  let-form="a">
+        <app-ordering-form [orderKeys]="orderKeys" [form]="form"></app-ordering-form>
+    </ng-template>
+</app-form-array>
+
+
+
+
+<!--
+
+<app-paginated-component (newPagination)="pagination.next($event)">
+  <ng-content></ng-content>
+</app-paginated-component>
+
+  <mat-form-field>
+  <mat-select placeholder="Field" (selectionChange)="log($event)">
+    <mat-option *ngFor="let key of orderKeys" [value]="key">
+      {{key}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-slide-toggle #toggle [checked]="true">{{toggle.checked ? 'Asc' : 'Desc'}}</mat-slide-toggle>
+
+
+-->

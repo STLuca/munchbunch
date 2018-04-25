@@ -1,0 +1,9 @@
+
+<h1 mat-dialog-title>Delete</h1>    
+<div mat-dialog-content>
+  Are you sure you wish to delete {{resourceName}}: {{name}}
+</div> 
+<div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="" cdkFocusInitial>No Thanks</button>
+    <button mat-raised-button color="warn" [mat-dialog-close]="id" >Delete</button>
+</div>

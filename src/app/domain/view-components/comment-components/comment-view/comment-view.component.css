@@ -1,0 +1,41 @@
+.commentContainer{
+    position: relative;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+    grid-gap: 10px;
+}
+
+img {
+    max-width: 50px;
+    height: auto;
+    border-radius: 50%;
+    display: block;
+    margin: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+p, h2{
+    text-align: center;
+}
+
+
+
+.commentDetails, .commentUserContainer, .mat-title {
+    margin: auto;
+}
+
+.timestamp {
+    text-align: right;
+}
+
+.commentUserContainer{
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+button {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}

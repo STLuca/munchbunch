@@ -1,0 +1,7 @@
+<ng-container *ngIf="authenticated | async ; else login">
+  <button mat-raised-button (click)="logout()">Logout</button>
+</ng-container >
+
+<ng-template #login>
+  <button mat-raised-button (click)="goToLogin()">Login</button>
+</ng-template>

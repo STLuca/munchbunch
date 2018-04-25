@@ -1,0 +1,39 @@
+<div class="btn">
+    <button mat-button (click)="getMyLocation.emit()"><mat-icon>my_location</mat-icon>Get my location</button>
+</div>
+<agm-map  (mapClick)="updateLocation.emit($event.coords)"
+          [latitude]="location.lat" 
+          [longitude]="location.lng">
+
+  <agm-marker [latitude]="location.lat" 
+              [longitude]="location.lng"
+              [label]="'Me'">
+  </agm-marker>
+
+  
+    <agm-marker *ngFor="let restaurantDetails of restaurants"
+        [latitude]="restaurantDetails.restaurant.location.latitude"
+        [longitude]="restaurantDetails.restaurant.location.longitude"
+        (markerClick)="selectRestaurant.emit(restaurantView)">
+
+        <ng-template #restaurantView>
+          
+              <!--
+                <mat-dialog-content>  
+                <p class="mat-body-1">Distance: {{restaurantDetails.distance | number:'1.1-3'}}km</p>
+                </mat-dialog-content>
+            -->
+              <app-restaurant-card-container 
+                [style.width.px]="'1000px'" 
+                [restaurant]="restaurantDetails.restaurant" 
+                [distance]="restaurantDetails.distance">
+              </app-restaurant-card-container>
+          
+          
+        </ng-template>
+
+    </agm-marker>
+  
+
+</agm-map>
+

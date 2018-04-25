@@ -1,0 +1,8 @@
+<app-user-small-view 
+  [user]="loggedInUser | async" 
+  (navigateToUser)="navigateToUser($event)"
+  (editAccount)="editAccount($event)"
+  (deleteAccount)="deleteAccount($event)"
+  (logout)="logout()"
+  (login)="login()"
+></app-user-small-view>

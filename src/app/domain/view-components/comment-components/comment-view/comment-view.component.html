@@ -1,0 +1,22 @@
+<div class="commentContainer">
+
+  <div class="commentUserContainer">
+    <img src="{{comment.user.pictureUrl}}">
+    <h2 class="mat-title">{{comment.user.name | uppercase}}</h2>
+  </div>
+
+  <div class="commentDetails">
+    <p class="mat-body-1">{{comment.comment}}</p>
+    <p class="mat-caption timestamp">{{comment.timestamp | date: 'short'}}</p>
+  </div>
+
+  <button mat-icon-button (click)="deleteComment.emit(deleteCommentTemplate)"><mat-icon>delete</mat-icon></button>
+</div>
+
+<ng-template #deleteCommentTemplate>
+  <app-delete-dialog
+    [resourceName]="'comment'"
+    [name]="comment.comment"
+    [id]="comment.id">
+  </app-delete-dialog>
+</ng-template>

@@ -1,0 +1,84 @@
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function userAuthenticated() {
+      return request.auth.uid != null;
+    }
+
+    function idUnchanged() {
+      return request.resource.data.id == resource.data.id;
+    }
+
+    function userOwner(user) {
+      return user.id == request.auth.uid;
+    }
+
+    function restaurantOwner(restaurant){
+      return restaurant.owner == request.auth.uid;
+    }
+
+    function menuOwner(menu){
+      return restaurantOwner(get(/databases/$(database)/documents/restaurants/$(request.resource.data.restaurantId)).data);
+    }
+
+    function dishOwner(dish){
+      return menuOwner(get(/databases/$(database)/documents/menus/$(request.resource.data.menuID)).data);
+    }
+
+    function commentOwner(comment){
+      return comment.userID == request.auth.uid;
+    }
+
+    function orderOwner(order){
+      return order.orderedBy == request.auth.uid;
+    }
+
+    match /users/{user} {
+      allow create: if userOwner(request.resource.data);
+      allow update: if idUnchanged() && userOwner(request.resource.data);
+      allow delete: if userOwner(request.resource.data);
+    }
+
+    match /restaurants/{restaurant} {
+      allow create: if restaurantOwner(request.resource.data);
+      allow update: if idUnchanged() && restaurantOwner(request.resource.data);
+      allow delete: if restaurantOwner(request.resource.data);
+    }
+
+    match /menus/{menu} {
+      allow create: if menuOwner(request.resource.data);
+      allow update: if idUnchanged() && menuOwner(request.resource.data);
+      allow delete: if menuOwner(request.resource.data);
+    }
+
+    match /dishes/{dish} {
+      allow create: if dishOwner(request.resource.data);
+      allow update: if idUnchanged() && dishOwner(request.resource.data);
+      allow delete: if dishOwner(request.resource.data);
+    }
+
+    match /orders/{order} {
+      allow create: if orderOwner(request.resource.data)
+      allow update: if false;
+      allow delete: if false;
+    }
+
+    match /dishComments/{dishComment} {
+      allow create: if commentOwner(request.resource.data);
+      allow update: if idUnchanged() && commentOwner(request.resource.data);
+      allow delete: if commentOwner(request.resource.data);
+    }
+
+    match /restaurantComments/{comment} {
+      allow create: if commentOwner(request.resource.data);
+      allow update: if idUnchanged() && commentOwner(request.resource.data);
+      allow delete: if commentOwner(request.resource.data);
+    }
+
+
+
+    match /{document=**} {
+      allow read, write;
+    }
+  }
+}

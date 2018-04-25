@@ -1,0 +1,47 @@
+<mat-expansion-panel>
+    
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{menuView.name | titlecase}}
+    </mat-panel-title>
+    <mat-panel-description>
+      {{menuView.description}}
+    </mat-panel-description>
+    
+  </mat-expansion-panel-header>
+  
+  <div class="dishes">
+      <ng-container *ngFor="let dishView of menuView.dishes">
+          <app-dish-container [dish]="dishView" [menuID]="menuView.id"></app-dish-container>  
+      </ng-container>   
+  </div>
+  
+
+  <mat-action-row *ngIf="owner">
+      <button mat-icon-button (click)="addDish.emit(addDishTemplate)"><mat-icon>add</mat-icon></button>
+      <button mat-icon-button (click)="editMenu.emit(editMenuTemplate)"><mat-icon>edit</mat-icon></button>
+      <button mat-icon-button (click)="deleteMenu.emit(deleteMenuTemplate)"><mat-icon>delete</mat-icon></button>
+
+      <ng-template #addDishTemplate>
+        <mat-dialog-content>
+            <app-add-dish-form [menuId]="menuView.id"></app-add-dish-form>
+        </mat-dialog-content>
+      </ng-template>
+
+      <ng-template #editMenuTemplate>
+        <mat-dialog-content>
+            <app-update-menu-form [menu]="menuView" [restaurantOwner]="restaurantID"></app-update-menu-form>
+        </mat-dialog-content> 
+      </ng-template>
+
+      <ng-template #deleteMenuTemplate>
+        <h1 mat-dialog-title>Are you sure you wish to delete menu: {{menuView.name}}</h1>     
+            <div mat-dialog-actions>
+                <button mat-button [mat-dialog-close]="" cdkFocusInitial>No Thanks</button>
+                <button mat-raised-button color="warn" [mat-dialog-close]="menuView.id" >Delete</button>
+            </div>
+      </ng-template>
+  </mat-action-row>
+
+
+</mat-expansion-panel>

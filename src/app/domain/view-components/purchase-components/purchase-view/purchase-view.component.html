@@ -1,0 +1,25 @@
+<section class="mat-typography">
+  <p>User: {{purchase.username}}</p>
+  <p>Restaurant: {{purchase.restaurantName}}</p>
+  <h3>Orders</h3>
+  <div class="ordersContainer">
+    
+      <p>Dish</p>
+      <p>Price</p>
+    
+  
+    <ng-container *ngFor="let order of purchase.orders">
+      <p>{{order.dishName}}</p>
+      <p>{{order.price | currency:'GBP'}}</p>
+    </ng-container>
+  
+    <p>Total price:</p>
+    <p>{{purchase.price | currency:'GBP'}}</p>
+    
+  
+  </div>
+  
+  <p class="mat-caption">
+      {{purchase.start | date: 'short'}} - {{purchase.finish | date: 'short'}}
+  </p>
+</section>

@@ -1,0 +1,51 @@
+<div class="userContainer">
+    <div>
+        <h2 class="mat-title">{{user.name | uppercase}}</h2>
+        <div>
+            <img src="{{user.pictureUrl}}">
+        </div>
+    </div>
+    
+    <div class="restaurants">
+        <h2 class="mat-title">
+            Restaurants 
+            <ng-container *ngIf="user.id == uid">
+                <button mat-icon-button (click)="newRestaurant.emit(newTemplate)"><mat-icon>add</mat-icon></button>
+            </ng-container>
+        </h2>
+        
+
+        <ng-template #newTemplate>
+            <mat-dialog-content>
+                <app-add-restaurant-form [uid]="uid"></app-add-restaurant-form>
+            </mat-dialog-content>  
+        </ng-template>
+
+        <div class="restaurantsGrid">
+            <ng-container *ngFor="let restaurant of user.restaurants">                                
+                <app-restaurant-card-container [restaurant]="restaurant"></app-restaurant-card-container>
+            </ng-container>
+        </div>
+    </div>
+    
+    <div class="orders">
+        <h2 class="mat-title">Purchases</h2>
+        <div class="pagination">
+            <app-ngrx-pagination    
+                [filterKeys]="['finish', 'restaurantName', 'price']"
+                [orderKeys]="['finish', 'price']"
+                [startOrder]="pagedStartOrder"
+                [constantFilter]="pagedConstantFilter"
+                [resourceName]="'purchases'"
+                (queryData)="newQuery.emit($event)">
+                    <div class="purchasesGrid">
+                        <ng-container *ngFor="let purchase of purchases">
+                            <app-purchase-container [purchase]="purchase"></app-purchase-container>
+                        </ng-container>
+                    </div>
+            </app-ngrx-pagination>
+        </div>
+    </div>
+
+    
+</div>

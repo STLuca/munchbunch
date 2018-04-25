@@ -1,0 +1,55 @@
+<div class="container">
+    <section class="mat-typography">
+        <h1>{{restaurant.name | uppercase}}</h1>
+        <p>{{restaurant.type}}</p>
+        <p>{{restaurant.description}}</p>
+        <button mat-raised-button color="primary" (click)="dineAt.next(restaurant.id)">Dine here</button>
+    </section>
+    
+    <img src="{{restaurant.picture}}">
+    
+    <div>
+        <h2 class="mat-title">Location</h2>
+        <agm-map [latitude]="restaurant.location.latitude" [longitude]="restaurant.location.longitude"
+                [zoom]=16>
+            <agm-marker [latitude]="restaurant.location.latitude" [longitude]="restaurant.location.longitude">
+            </agm-marker>
+        </agm-map>
+    </div>
+
+    <div class="menu">
+        <h2 class="mat-title">
+          Menu
+          <button *ngIf="owner" mat-icon-button (click)="addMenu.emit(addMenuTemplate)"><mat-icon>add</mat-icon></button>
+        </h2>
+        <ng-template #addMenuTemplate>
+            <app-add-menu-form [restaurantId]="restaurant.id"></app-add-menu-form>
+        </ng-template>
+        <app-menu-list-view [menuViews]="restaurant.menus" [restaurantId]="restaurant.id"></app-menu-list-view>
+    </div>
+
+    <div>
+        <h2 class="mat-title">Comments</h2>
+        <div class="writeComment">
+            <app-comment-form [replyToID]="restaurant.id" [resource]="'restaurantComments'" [uid]="uid" (createComment)="createComment.emit($event)"></app-comment-form>
+        </div>
+    </div>
+    
+    <div class="pagination">
+        <app-ngrx-pagination    [filterKeys]="['timestamp']"
+                        [orderKeys]="['timestamp']"
+                        [startOrder]="pagedStartOrder"
+                        [constantFilter]="pagedConstantFilter"
+                        [resourceName]="'restaurantComments'"
+                        (queryData)="newQuery.emit($event)">
+
+            <div class="comments">
+                <ng-container *ngFor="let comment of comments">
+                    <app-comment-container [comment]="comment" [resource]="'restaurantComments'"></app-comment-container>
+                </ng-container>
+            </div>
+
+        </app-ngrx-pagination>
+    </div>
+
+</div>

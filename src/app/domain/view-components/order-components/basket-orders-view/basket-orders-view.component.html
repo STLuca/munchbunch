@@ -1,0 +1,45 @@
+<h2 class="mat-title">Dining information</h2>
+<app-dining-at-container></app-dining-at-container>
+<section class="mat-typography">
+
+    <h2>Basket</h2>
+
+    <div class="ordersList">
+        <p class="bold">Quantity</p>
+        <p class="bold">Dish</p>
+        <p class="bold">Price</p>
+        <p class="bold">Actions</p>
+        <mat-divider></mat-divider><mat-divider></mat-divider><mat-divider></mat-divider><mat-divider></mat-divider>
+        <ng-container *ngFor="let order of orders">
+            
+            <p>{{order.quantity }}</p>
+            <p>{{order.dish.name | titlecase}}</p>
+            <p>{{(order.dish.price * order.quantity) | currency:'GBP'}}</p>
+    
+            <div>
+                <button mat-icon-button  (click)="addOne.emit(order.dish.id)"><mat-icon>add</mat-icon></button>
+                <button mat-icon-button (click)="removeOne.emit(order.dish.id)"><mat-icon>remove</mat-icon></button>
+            </div>     
+        </ng-container>
+        <mat-divider></mat-divider><mat-divider></mat-divider><mat-divider></mat-divider><mat-divider></mat-divider>
+        <p class="bold">Total price:</p>
+        <p></p>
+        <p>{{totalPrice}}</p>
+    </div>
+    
+    <div class="btn">
+        <button mat-raised-button color="primary" (click)="purchase.emit()" [disabled]="!validToPurchase" >Purchase</button>
+    
+    
+        <button mat-raised-button color="warn" (click)="clear.emit()">Clear</button>
+    </div>
+        
+    
+    
+    
+</section>
+
+<div class="orders">
+    <h2 class="mat-title">Current orders</h2>
+    <app-my-current-orders></app-my-current-orders>
+</div>

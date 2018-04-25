@@ -1,0 +1,10 @@
+<agm-map  (mapClick)="selectedCoordinates.next($event.coords)"
+          [latitude]="(coordinates | async).lat" 
+          [longitude]="(coordinates | async).lng">
+
+  <agm-marker [latitude]="(coordinates | async).lat" 
+              [longitude]="(coordinates | async).lng">
+  </agm-marker>
+
+</agm-map>
+

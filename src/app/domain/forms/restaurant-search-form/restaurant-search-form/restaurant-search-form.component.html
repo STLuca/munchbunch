@@ -1,0 +1,10 @@
+<div class="inputs">
+  <h2 class="mat-title">Search for local restaurants</h2>
+  <mat-form-field>
+    <input matInput type="number" placeholder="Radius (km)" value="3" (change)="change($event.target.value)" >
+  </mat-form-field>
+  
+  <mat-form-field>
+    <input matInput type="text" placeholder="Filter restaurant type" (change)="updateFilter($event.target.value)">
+  </mat-form-field>
+</div>

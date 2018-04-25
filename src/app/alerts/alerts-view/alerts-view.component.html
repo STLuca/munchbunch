@@ -1,0 +1,10 @@
+
+<div class="mainContainer">
+    <ng-container *ngFor="let alert of (alerts | async); let i=index">
+        <div class="alert">
+          <span class="closebtn" (click)="closeAlert(i)">&times;</span> 
+          {{alert}}
+        </div>
+      </ng-container>
+      
+</div>

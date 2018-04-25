@@ -1,0 +1,8 @@
+
+<app-restaurant-search-view 
+  [location]="currentLocation | async"
+  [restaurants]="restaurants | async"
+  (updateLocation)="updateLocation($event)"
+  (selectRestaurant)="selectRestaurant($event)"
+  (getMyLocation)="getCurrentLocation()"
+></app-restaurant-search-view>

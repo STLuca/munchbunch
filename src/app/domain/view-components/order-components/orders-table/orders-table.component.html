@@ -1,0 +1,25 @@
+<div class="container">
+
+  <p>Table</p>
+  <p>Dishes</p>
+  <p>Actions</p>
+  <mat-divider></mat-divider><mat-divider></mat-divider><mat-divider></mat-divider>
+  
+  <ng-container *ngFor="let order of orders">
+    <p>{{order.table}}</p>
+    <p>
+      
+        {{order.dish.name}} 
+      
+    </p>
+
+    <div>
+
+      <button mat-button [disabled]="!actionsEnable" (click)="next.emit({orderID: order.id, status: order.status})">Next</button>
+      <button mat-button [disabled]="!actionsEnable" (click)="previous.emit({orderID: order.id, status: order.status})">Previous</button>
+      
+    </div>
+  </ng-container>
+</div>
+
+

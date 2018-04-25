@@ -1,0 +1,10 @@
+<h1 mat-dialog-title> Select Table </h1>
+    <mat-dialog-content>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Table ID" #tableInput>
+      </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-button (click)="submit(tableInput.value)">Select</button>
+      <button mat-button mat-dialog-close>Cancel</button>
+    </mat-dialog-actions>

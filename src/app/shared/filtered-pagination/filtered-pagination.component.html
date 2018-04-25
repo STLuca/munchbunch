@@ -1,0 +1,33 @@
+
+<app-form-array [createForm]="createFilterForm" [formGroup]="form" [key]="'filters'" [name]="'Filters'">
+    <ng-template  let-form="a">
+        <app-query-filter-form [filterKeys]="filterKeys" [form]="form"></app-query-filter-form>
+    </ng-template>
+</app-form-array>
+
+
+
+
+
+
+<!--
+
+<app-form-array [createForm]="createOrderForm" [formGroup]="form" [key]="'orders'" >
+    <ng-template  let-form="a">
+        <app-ordering-form [orderKeys]="orderKeys" [form]="form"></app-ordering-form>
+    </ng-template>
+</app-form-array>
+
+<div>
+
+  <mat-form-field>
+    <mat-select placeholder="Field" (selectionChange)="log($event)">
+      <mat-option *ngFor="let key of filterKeys" [value]="key">
+        {{key}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+</div>
+
+-->

@@ -1,0 +1,5 @@
+<button mat-button (click)="goToBasket()">
+    {{numberOfOrderedItems | async}}
+    <mat-icon>shopping_cart</mat-icon>
+    {{totalPrice | async}}
+</button>

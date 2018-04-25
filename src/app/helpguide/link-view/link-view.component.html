@@ -1,0 +1,10 @@
+<section class="mat-typography">
+  <ng-container *ngFor="let link of links">
+    <p><a [routerLink]="link.link" routerLinkActive="active">{{link.name}}</a></p>
+    <div>
+      <ng-container *ngFor="let childLink of link.children">
+          <p><a routerLink="childLink.link">{{childLink.name}}</a></p>
+      </ng-container>
+    </div>
+  </ng-container>
+</section>

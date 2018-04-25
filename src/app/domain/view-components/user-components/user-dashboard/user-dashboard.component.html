@@ -1,0 +1,10 @@
+<app-user-dashboard-view 
+    [user]="userView | async" 
+    [uid]="uid | async" 
+    [purchases]="purchases | async"
+    (navigateToRestaurant)="navigate($event)"
+    (newRestaurant)="createRestaurant($event)"
+    (newQuery)="newQueryData($event)"
+>
+
+</app-user-dashboard-view>

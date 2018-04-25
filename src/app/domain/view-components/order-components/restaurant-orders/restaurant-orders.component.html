@@ -1,0 +1,63 @@
+
+
+
+<mat-accordion [multi]="true">
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Pending
+      </mat-panel-title>
+      <mat-panel-description>
+        Orders waiting to be cooked
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+      <app-orders-table [orders]="pending | async" [actionsEnable]="true" (next)="updateOrderStatus($event)" ></app-orders-table>
+
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Cooking
+      </mat-panel-title>
+      <mat-panel-description>
+        Orders being cooked
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <app-orders-table [orders]="cooking | async" [actionsEnable]="true" (next)="updateOrderStatus($event)" (previous)="decrementOrderStatus($event)"></app-orders-table>
+
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Cooked
+      </mat-panel-title>
+      <mat-panel-description>
+        Orders cooked
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <app-orders-table [orders]="cooked | async" [actionsEnable]="true" (previous)="decrementOrderStatus($event)"></app-orders-table>
+
+  </mat-expansion-panel>
+
+</mat-accordion>
+
+
+
+
+  <!--
+<ng-container *ngFor="let order of (orders | async)">
+  <p>Table: {{order.table}}</p>
+  <p>Dishes: {{order.dishes.length}}</p>
+
+  <ng-container *ngFor="let dish of order.dishes">
+    <p>{{dish}}</p>
+  </ng-container>
+
+  </ng-container>
+-->

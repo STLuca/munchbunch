@@ -1,0 +1,41 @@
+<div class="container">
+  <form [formGroup]="restaurantForm" novalidate (ngSubmit)="submitForm()">
+    <h2 class="mat-title">Restaurant Form</h2>
+    <div>
+      <mat-form-field>
+        <input matInput type="text" formControlName="name" placeholder="Restaurant name">
+        <mat-error>Name is a required field</mat-error>
+      </mat-form-field>
+    </div>
+  
+    <div>
+      <mat-form-field>
+        <input matInput type="text" formControlName="type" placeholder="type e.g. chinese">
+        <mat-error>Type is a required field</mat-error>
+      </mat-form-field>
+    </div>
+  
+    <div>
+      <mat-form-field>
+        <textarea matInput formControlName="description" placeholder="description"></textarea>
+        <mat-error>description is a required field</mat-error>
+      </mat-form-field>
+    </div>
+  
+    <app-google-maps [form]="restaurantForm"></app-google-maps>
+
+    <div>
+      <mat-form-field>
+        <input matInput type="text" formControlName="picture" placeholder="picture">
+        <app-upload (uploadedUrl)="updatePictureInput($event)"></app-upload>
+        <mat-error>picture is a required field</mat-error>
+      </mat-form-field>
+    </div>
+    <img src="{{restaurantForm.get('picture').value}}" alt="no image selected">
+    <div>
+      <button color="primary" mat-raised-button type="submit" [disabled]="!restaurantForm.valid">Create</button>
+    </div>
+  
+  </form>
+
+</div>

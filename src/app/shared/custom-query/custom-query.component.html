@@ -1,0 +1,18 @@
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Filters
+        </mat-panel-title>
+        <mat-panel-description>
+            Customize your query
+          </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <app-filtered-pagination [filterKeys]="filterKeys" (filters)="filters.next($event)"></app-filtered-pagination>
+    <app-ordered-pagination [orderKeys]="orderKeys" [startOrdering]="startOrder" (orders)="orders.next($event)"></app-ordered-pagination>
+    
+</mat-expansion-panel>
+
+<ng-content></ng-content>
+
+<app-paginated-component (newPagination)="pageData.next($event)"></app-paginated-component>

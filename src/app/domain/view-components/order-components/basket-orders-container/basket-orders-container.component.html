@@ -1,0 +1,10 @@
+
+<app-basket-orders-view
+    [totalPrice]="totalPrice | async"
+    [orders]="orders | async"
+    [validToPurchase]="validToPurchase | async"
+    (addOne)="addOne($event)"
+    (removeOne)="removeOne($event)"
+    (clear)="clear($event)"
+    (purchase)="purchase($event)"
+></app-basket-orders-view>

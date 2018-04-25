@@ -1,0 +1,67 @@
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{dishView.name | titlecase}}</mat-card-title>
+    <mat-card-subtitle>{{dishView.price | currency:'GBP'}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="{{dishView.picture}}">
+  <mat-card-content>
+    {{dishView.description}}
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" [disabled]="!orderable" (click)="addOrder.emit()">Add to Order</button>
+        <button mat-raised-button color="primary" (click)="showReviews.emit()">Reviews</button>
+        <button mat-icon-button (click)="editDish.emit(editDishTemplate)"><mat-icon>edit</mat-icon></button>
+        <button mat-icon-button (click)="deleteDish.emit(deleteDishTemplate)"><mat-icon>delete</mat-icon></button>
+  </mat-card-actions>
+</mat-card>
+
+
+<ng-template #editDishTemplate>
+  <mat-dialog-content>
+      <app-update-dish-form [dish]="dishView" [menuId]="menuID"></app-update-dish-form>
+  </mat-dialog-content>
+</ng-template>
+
+<ng-template #deleteDishTemplate>
+  <app-delete-dialog [resourceName]="'dish'" [name]="dishView.name" [id]="dishView.id"></app-delete-dialog>
+  <!--
+  <h1 mat-dialog-title>Are you sure you wish to delete dish: {{dishView.name}}</h1>     
+  <div mat-dialog-actions>
+      <button mat-button [mat-dialog-close]="" cdkFocusInitial>No Thanks</button>
+      <button mat-raised-button color="warn" [mat-dialog-close]="dishView.id" >Delete</button>
+  </div>
+  -->
+</ng-template>
+
+<!--
+<div class="container">
+
+  <div class="grid">
+
+    <img src="{{dishView.picture}}">
+  
+    <div class="info">
+  
+      <div class="infoHeader">
+        <h2>{{dishView.name | uppercase}}</h2>
+        <p class="price">{{dishView.price | currency:'GBP'}}</p>
+      </div>
+  
+      <p>
+        {{dishView.description}}
+      </p>
+  
+      <div class="actions">
+        <button mat-raised-button color="primary" (click)="addOrder.emit()">Add to Order</button>
+        <button mat-raised-button color="primary" (click)="showReviews.emit()">Reviews</button>
+        <button mat-icon-button (click)="editDish.emit(editDishTemplate)"><mat-icon>edit</mat-icon></button>
+        <button mat-icon-button (click)="deleteDish.emit(deleteDishTemplate)"><mat-icon>delete</mat-icon></button>
+      </div>
+      
+    </div>
+  
+  </div>
+
+</div>
+-->

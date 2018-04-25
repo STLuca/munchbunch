@@ -1,0 +1,25 @@
+
+<mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[1, 2, 5, 10, 25]"
+              (page)="newPagination.emit($event)">
+</mat-paginator>
+
+<!--
+<form [formGroup]="form">
+        <button mat-icon-button matTooltip="Next page">
+                <mat-icon>keyboard_arrow_left</mat-icon>
+            </button>
+            <button mat-icon-button matTooltip="Previous page">
+                <mat-icon>keyboard_arrow_right</mat-icon>
+            </button>
+            
+            <mat-form-field>
+                <mat-select placeholder="Items per page"  formControlName="count">
+                    <mat-option *ngFor="let option of countOption" [value]="option">
+                        {{option}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+</form>
+-->

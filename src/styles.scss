@@ -1,0 +1,30 @@
+@import '~@angular/material/theming';
+
+// always include only once per project
+@include mat-core();
+
+// import our custom theme
+@import 'themes/default-theme.scss';
+
+// import custom components themes
+@import 'app/domain/view-components/order-components/order-view/order-view.component.scss-theme'; 
+@import 'app/domain/view-components/restaurant-components/restaurant-dashboard-view/restaurant-dashboard-view.component.scss-theme'; 
+@import 'app/domain/view-components/user-components/user-dashboard-view/user-dashboard-view.component.scss-theme'; 
+
+@include angular-material-theme($my-theme);
+
+@mixin custom-components-theme($theme){
+    @include order-view-component-theme($theme);
+    @include restaurant-dashboard-view-component-theme($theme);
+    @include user-dashboard-view-component-theme($theme);
+}
+
+// specify theme class eg: <body class="my-theme"> ... </body>
+.my-theme {
+  
+    // use our theme with angular-material-theme mixin
+    @include angular-material-theme($my-theme);
+
+    @include custom-components-theme($my-theme);
+}  
+

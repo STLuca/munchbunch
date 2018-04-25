@@ -1,0 +1,67 @@
+
+
+<div *ngIf="user" class="container">
+  <!--
+  <div>
+    <img src="{{user.pictureUrl}}">
+  </div>
+  -->
+  <button mat-icon-button><mat-icon>person</mat-icon></button>
+  <button mat-button (click)="navigateToUser.emit(user.id)">                   
+    {{user.name | uppercase}}
+  </button>
+  
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+
+</div>
+
+<div *ngIf="!user" class="container">
+  <!--
+  <div>
+    <img src="{{user.pictureUrl}}">
+  </div>
+  -->
+  <button mat-icon-button><mat-icon>person</mat-icon></button>
+  <p class="mat-body">Unauthenticated</p>           
+  <button mat-icon-button [matMenuTriggerFor]="UnauthenticatedMenu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+
+</div>
+
+<mat-menu #menu>
+  <button mat-menu-item (click)="editAccount.emit(editAccountTemplate)">
+    <mat-icon>edit</mat-icon>
+    <span>edit account</span>
+  </button>
+  <button mat-menu-item (click)="deleteAccount.emit(deleteAccountTemplate)">
+    <mat-icon>delete</mat-icon>
+    <span>delete account</span>
+  </button>
+  <button mat-menu-item (click)="logout.emit()">
+      <mat-icon>power_settings_new</mat-icon>
+      <span>logout</span>
+  </button>
+</mat-menu>
+
+<ng-template #editAccountTemplate>
+  <app-update-user-form [user]="user"></app-update-user-form>
+</ng-template>
+
+<ng-template #deleteAccountTemplate>
+  <h1 mat-dialog-title>Are you sure you wish to delete user: {{user.name}}</h1>     
+  <div mat-dialog-actions>
+      <button mat-button [mat-dialog-close]="" cdkFocusInitial>No Thanks</button>
+      <button mat-raised-button color="warn" [mat-dialog-close]="user.id" >Delete</button>
+  </div>
+</ng-template>
+
+
+<mat-menu #UnauthenticatedMenu>
+  <button mat-menu-item (click)="login.emit()">
+      <mat-icon>power_settings_new</mat-icon>
+      <span>login</span>
+  </button>
+</mat-menu>

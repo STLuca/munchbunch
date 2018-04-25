@@ -1,0 +1,12 @@
+form {
+    margin-left: 20px;
+}
+
+.a, h3 {
+    display: inline-block
+}
+
+.deleteButton {
+    display: inline-block;
+    margin: auto;
+}

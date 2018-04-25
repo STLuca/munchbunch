@@ -1,0 +1,16 @@
+
+<input type="file" (change)="upload($event)" accept=".png,.jpg" />
+
+<!--
+<ng-container *ngIf="(uploadProgress | async); let up">
+    <mat-progress-bar [value]="uploadProgress | async"></mat-progress-bar>
+</ng-container>
+-->
+
+<!--
+<ng-container *ngIf="(uploadProgress | async); let up">
+    <ng-container *ngIf="up != 100">
+        <mat-progress-bar [value]="uploadProgress | async"></mat-progress-bar>
+    </ng-container>
+</ng-container>
+-->

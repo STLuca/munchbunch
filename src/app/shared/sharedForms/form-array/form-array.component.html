@@ -1,0 +1,37 @@
+<h3>{{name}}</h3>
+
+<button mat-icon-button type="submit" (click)="addOrderForm()" matTooltip="Add {{name}}" [matTooltipPosition]="'above'">
+  <mat-icon>add_box</mat-icon>
+</button>
+
+<form [formGroup]="formGroup">
+  <div formArrayName="{{key}}">
+
+    <div class="grid" *ngFor="let form of formArray.controls; let i=index" [formGroupName]="i">
+      <button class="deleteButton" mat-icon-button type="submit" (click)="removeForm(i)">
+        <mat-icon>cancel</mat-icon>
+      </button>
+      <div class="a">
+          <ng-container  [ngTemplateOutlet]="formTemplate" [ngTemplateOutletContext]="{a: form}"></ng-container>
+      </div>
+    </div>
+  
+  </div>
+</form>
+
+
+<!--
+
+  <form [formGroup]="formArray">
+  <div formArrayName="orders">
+
+    <div *ngFor="let ordersForm of orders.controls; let i=index" [formGroupName]="i">
+      <app-ordering-form [orderKeys]="['hello', 'bob']" [form]="ordersForm"></app-ordering-form>
+      <button mat-raised-button type="submit" (click)="removeForm(i)">&#10006;</button>
+    </div>
+  
+  </div>
+  </form>
+  <button mat-raised-button type="submit" (click)="addOrderForm()">&#10010;</button>
+
+-->

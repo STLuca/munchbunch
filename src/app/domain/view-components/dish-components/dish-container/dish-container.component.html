@@ -1,0 +1,24 @@
+
+  <app-dish-view 
+    [dishView]="dish" 
+    [menuID]="menuID"
+    [orderable]="orderable | async"
+    (addOrder)="addOrder(dish.id)" 
+    (showReviews)="showReviews(withComments)" 
+    (deleteDish)="deleteDish($event)"
+    (editDish)="editDish($event)">
+  </app-dish-view>
+
+  <ng-template #withComments>
+    <div mat-dialog-content>
+      <app-dish-view-with-reviews 
+        [dishView]="dish" 
+        [uid]="uid | async" 
+        [comments]="comments | async"
+        [orderable]="orderable"
+        (createComment)="createComment($event)" 
+        (newQuery)="newQueryData($event)" 
+        (addOrder)="addOrder(dish.id)">
+      </app-dish-view-with-reviews>
+    </div>
+  </ng-template>

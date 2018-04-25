@@ -1,0 +1,8 @@
+div {
+    min-height: 100%;
+    width: 100%;
+}
+
+mat-sidenav {
+    height: 1000px;
+}

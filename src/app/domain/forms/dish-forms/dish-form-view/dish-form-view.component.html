@@ -1,0 +1,40 @@
+<div>
+
+  <form [formGroup]="dishForm" novalidate (ngSubmit)="submitValue.emit(dishForm.value)">
+
+    <h2 class="mat-title">Dish Form</h2>
+
+    <div>
+      <mat-form-field>
+        <input matInput type="text" formControlName="name" placeholder="name">
+        <mat-error>Name is a required field</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <input matInput type="number" formControlName="price" placeholder="price">
+        <mat-error>Price is a required field</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <textarea matInput formControlName="picture" placeholder="picture"></textarea>
+        <app-upload (uploadedUrl)="updatePictureInput($event)"></app-upload>
+      </mat-form-field>
+    </div>
+    <img src="{{dishForm.get('picture').value}}" alt="no image selected">
+    <div>
+      <mat-form-field>
+        <textarea matInput formControlName="description" placeholder="description"></textarea>
+        <mat-error>Name is a required field</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <button color="primary" mat-raised-button type="submit" [disabled]="!dishForm.valid">Create</button>
+    </div>
+  </form>
+
+</div>
