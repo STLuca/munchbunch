@@ -8,7 +8,6 @@ import { Comment } from '../../../data/models/comment.model';
   selector: 'app-comment-form',
   templateUrl: './comment-form.component.html',
   styleUrls: ['./comment-form.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 
 })
 export class CommentFormComponent implements OnInit {
@@ -19,7 +18,6 @@ export class CommentFormComponent implements OnInit {
   @Output() createComment = new EventEmitter<Comment>();
 
   form: FormGroup;
-
 
   constructor(
     private fb: FormBuilder,
@@ -46,7 +44,6 @@ export class CommentFormComponent implements OnInit {
         timestamp: Date.now()
       };
       this.createComment.emit(comment);
-      // this.serverAdapter.create<Comment>(this.resource, comment.id, comment).subscribe(x => this.store.dispatch(x))
     }
 
   }

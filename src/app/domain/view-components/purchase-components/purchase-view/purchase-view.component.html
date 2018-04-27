@@ -6,13 +6,16 @@
     
       <p>Dish</p>
       <p>Price</p>
-    
+      <mat-divider></mat-divider>
+      <mat-divider></mat-divider>
   
     <ng-container *ngFor="let order of purchase.orders">
       <p>{{order.dishName}}</p>
       <p>{{order.price | currency:'GBP'}}</p>
     </ng-container>
-  
+    
+    <mat-divider></mat-divider>
+    <mat-divider></mat-divider>
     <p>Total price:</p>
     <p>{{purchase.price | currency:'GBP'}}</p>
     

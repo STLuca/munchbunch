@@ -9,12 +9,15 @@
   </div>
   
   <div>
-    <mat-form-field>
+    <mat-form-field class="textarea">
       <textarea matInput formControlName="pictureUrl" placeholder="picture"></textarea>
       <app-upload (uploadedUrl)="updatePictureInput($event)"></app-upload>
     </mat-form-field>
   </div>
-  <img src="{{userForm.get('pictureUrl').value}}" alt="no image selected">
+  <div>
+    <img src="{{userForm.get('pictureUrl').value}}" alt="no image selected">
+  </div>
+  
   
   <button color="primary" mat-raised-button type="submit" >Submit</button>     
             

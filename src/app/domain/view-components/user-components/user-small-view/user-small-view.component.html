@@ -47,7 +47,9 @@
 </mat-menu>
 
 <ng-template #editAccountTemplate>
-  <app-update-user-form [user]="user"></app-update-user-form>
+  <mat-dialog-content>
+      <app-update-user-form [user]="user"></app-update-user-form>
+  </mat-dialog-content>
 </ng-template>
 
 <ng-template #deleteAccountTemplate>

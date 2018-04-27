@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
 import { from } from 'rxjs/observable/from';
 import { fromPromise } from 'rxjs/observable/fromPromise';
 import { zip } from 'rxjs/observable/zip';
-import { catchError, debounceTime, filter, map, mergeMap, switchMap, take, tap } from 'rxjs/operators';
+import { catchError, debounceTime, delay, filter, map, mergeMap, switchMap, take, tap } from 'rxjs/operators';
 import { NgrxServerWrapperImp } from '../../../ngrx/util/NgrxDatastore';
 import { SARead } from '../../../ngrx/util/NgrxServerAdapterStore/ngrxServerAdapter.actions';
 import { AddAlert } from '../../alerts/store/alerts/alerts.action';
@@ -53,6 +53,7 @@ export class AuthEffects {
         .pipe(
             switchMap(payload =>
                 this.googleLogin().pipe(
+                    delay(2000),
                     map(credentials => new GetUser()),
                     catchError(err => Observable.of(new AddAlert({alert: err.message}))
                 )))
@@ -65,6 +66,7 @@ export class AuthEffects {
             switchMap( (authData: {email: string, password: string}) =>
                 from(this.afAuth.auth.createUserWithEmailAndPassword(authData.email, authData.password))
                 .pipe(
+                    delay(2000),
                     map( () => new GetUser()),
                     catchError(err => Observable.of(new AddAlert({alert: err.message})))
                 ))
