@@ -15,7 +15,7 @@ export class AppComponent {
   constructor(
     private store: Store<any>
   ) {
-    this.store.dispatch(new SignIn({email: 'hi@email.com', password: 'password123'}));
+    // this.store.dispatch(new SignIn({email: 'hi@email.com', password: 'password123'}));
   }
 
 }
