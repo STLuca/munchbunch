@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { CustomMaterialModule } from '../../custom-material/custom-material.module';
 import { AccountGuideComponent } from './account-guide/account-guide.component';
 import { BasketGuideComponent } from './basket-guide/basket-guide.component';
 import { OrdersGuideComponent } from './orders-guide/orders-guide.component';
@@ -9,7 +10,8 @@ import { UserGuideComponent } from './user-guide/user-guide.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    CustomMaterialModule
   ],
   declarations: [
     AccountGuideComponent,

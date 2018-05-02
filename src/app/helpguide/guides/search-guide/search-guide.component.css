@@ -4,12 +4,3 @@ img {
     max-width: 100%;
     height: auto;
 }
-
-p {
-    text-align: center
-}
-
-section {
-    max-width: 600px;
-    margin: auto;
-}
