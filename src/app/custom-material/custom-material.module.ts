@@ -17,11 +17,11 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatSliderModule} from '@angular/material/slider';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { EffectsModule } from '@ngrx/effects';
 import { DialogEffects } from './DialogStore/Dialog.effects';
-
 @NgModule({
   imports: [
     EffectsModule.forFeature([DialogEffects]),
@@ -44,7 +44,8 @@ import { DialogEffects } from './DialogStore/Dialog.effects';
     MatTooltipModule,
     MatMenuModule,
     MatDividerModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSliderModule
   ],
   exports: [
     MatButtonToggleModule,
@@ -66,7 +67,8 @@ import { DialogEffects } from './DialogStore/Dialog.effects';
     MatTooltipModule,
     MatMenuModule,
     MatDividerModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSliderModule
   ]
 })
 export class CustomMaterialModule { }
