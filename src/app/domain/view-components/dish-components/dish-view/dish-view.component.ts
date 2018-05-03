@@ -11,6 +11,7 @@ export class DishViewComponent {
 
   @Input() dishView: DishView;
   @Input() menuID: string;
+  @Input() owner: boolean;
   @Input() orderable: boolean;
   @Output() addOrder = new EventEmitter();
   @Output() showReviews = new EventEmitter();

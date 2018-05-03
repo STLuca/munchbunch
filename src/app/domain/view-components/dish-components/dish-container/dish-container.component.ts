@@ -13,7 +13,7 @@ import { AddOrder } from '../../../../store/clientState/orders/orders.action';
 import { SetData } from '../../../../store/clientState/QueryState/queryState.reducer';
 import { Comment } from '../../../data/models/comment.model';
 import { Dish } from '../../../data/models/dish.model';
-import { validDishes as selectValidDishes } from '../../../data/store';
+import { selectDiningRestaurantMenus, validDishes as selectValidDishes } from '../../../data/store';
 import { CommentView } from '../../../data/view/comment.view';
 import { DishView } from '../../../data/view/dish.view';
 
@@ -27,6 +27,7 @@ export class DishContainerComponent implements OnInit {
 
   @Input() dish: DishView;
   @Input() menuID: string;
+  dishOwner: Observable<boolean>;
   uid: Observable<string>;
   comments: Observable<CommentView[]>;
   orderable: Observable<boolean>;
@@ -44,6 +45,10 @@ export class DishContainerComponent implements OnInit {
     this.orderable = this.store.pipe(
         select(selectValidDishes),
         map(validDishes => validDishes.includes(this.dish.id)));
+    this.dishOwner = this.store.pipe(
+      select(selectDiningRestaurantMenus),
+      map(menuIDs => !!menuIDs.find(id => id === this.menuID))
+    );
   }
 
   addOrder(dishID: string) {

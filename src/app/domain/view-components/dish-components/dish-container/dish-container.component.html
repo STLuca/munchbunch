@@ -2,6 +2,7 @@
   <app-dish-view 
     [dishView]="dish" 
     [menuID]="menuID"
+    [owner]="dishOwner | async"
     [orderable]="orderable | async"
     (addOrder)="addOrder(dish.id)" 
     (showReviews)="showReviews(withComments)" 

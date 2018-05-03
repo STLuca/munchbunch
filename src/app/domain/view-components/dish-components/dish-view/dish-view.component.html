@@ -10,9 +10,11 @@
   </mat-card-content>
   <mat-card-actions>
         <button mat-raised-button color="primary" [disabled]="!orderable" (click)="addOrder.emit()">Order</button>
-        <button mat-raised-button color="primary" (click)="showReviews.emit()">Reviews</button>
-        <button mat-icon-button (click)="editDish.emit(editDishTemplate)"><mat-icon>edit</mat-icon></button>
-        <button mat-icon-button (click)="deleteDish.emit(deleteDishTemplate)"><mat-icon>delete</mat-icon></button>
+        <ng-container *ngIf="owner">
+          <button mat-raised-button color="primary" (click)="showReviews.emit()">Reviews</button>
+          <button mat-icon-button (click)="editDish.emit(editDishTemplate)"><mat-icon>edit</mat-icon></button>
+          <button mat-icon-button (click)="deleteDish.emit(deleteDishTemplate)"><mat-icon>delete</mat-icon></button>
+        </ng-container>
   </mat-card-actions>
 </mat-card>
 

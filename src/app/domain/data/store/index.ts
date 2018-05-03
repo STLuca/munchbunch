@@ -225,3 +225,8 @@ export const validDishes = createSelector(selectDiningAtRestaurantID, getAllMenu
     const menuIDs = menus.filter(menu => menu.restaurantId === restaurantID).map(menu => menu.id);
     return dishes.filter(dish => menuIDs.includes(dish.menuID)).map(dish => dish.id);
 });
+
+export const selectDiningRestaurantMenus = createSelector(selectDiningAtRestaurantID, getAllMenus, (restID, menus) =>
+    menus
+    .filter(menu => menu.restaurantId === restID)
+    .map(menu => menu.id));
