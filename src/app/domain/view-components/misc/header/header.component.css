@@ -8,3 +8,6 @@ app-user-small-container, app-dining-at-container, app-basket{
     margin: auto;
 }
 */
+.mat-toolbar {
+    max-width: 100%;
+}
