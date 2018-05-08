@@ -31,7 +31,4 @@ export class RestaurantSearchFormComponent {
     this.store.dispatch(new SetFilter({filter}));
   }
 
-  log(x) {
-    console.log('slider val: ', x);
-  }
 }

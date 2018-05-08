@@ -37,7 +37,6 @@ export class RestaurantSearchEffects {
                     center: [searchState.location.lat, searchState.location.lng],
                     radius: searchState.radius
                   }).on('key_entered', (key, location, distance) => {
-                      console.log(key);
                         subject.next(new AddRestaurant({restaurantID: key, distance}));
                         subject.next(new SARead<Restaurant>({resourceName: 'restaurants', id: key}));
                     }));
