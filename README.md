@@ -1,8 +1,10 @@
 Hosted at https://munchbunch1111.firebaseapp.com/
 
-Test user
-  email: hi@email.com
-  password: password123
+Test user details
+
+email: hi@email.com
+  
+password: password123
 
 A few short demonstrations
 
